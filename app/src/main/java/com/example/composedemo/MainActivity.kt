@@ -11,6 +11,11 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderPositions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,4 +55,11 @@ fun DemoTextPreview()
 fun DemoSlider(sliderPosition: Float, onPositionChange: (Float) -> Unit)
 {
     Slider(modifier = Modifier.padding(10.dp), valueRange = 20f..38f, value = sliderPosition, onValueChange = {onPositionChange})
+}
+
+@Composable
+fun DemoScreen(modifire: Modifier = Modifier)
+{
+    var sliderPosition by remember { mutableFloatStateOf(20f) }
+    val handlePositionChange = { position: Float -> sliderPosition = position }
 }
